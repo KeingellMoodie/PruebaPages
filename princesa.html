@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Princesa 👑</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --rose-petal: #ffc9d9;
+            --deep-rose: #ff85a8;
+            --soft-cream: #fff8f5;
+            --gold-accent: #d4af37;
+            --text-dark: #2d1b1b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, var(--soft-cream) 0%, var(--rose-petal) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Sparkles animation */
+        .sparkle-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .sparkle-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--gold-accent);
+            border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite;
+            opacity: 0;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            animation: fadeInScale 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.5) rotateY(90deg);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) rotateY(0deg);
+            }
+        }
+
+        .title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(212, 175, 55, 0.3);
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { text-shadow: 2px 2px 4px rgba(212, 175, 55, 0.3); }
+            50% { text-shadow: 2px 2px 20px rgba(212, 175, 55, 0.6); }
+        }
+
+        .crown {
+            display: inline-block;
+            font-size: 4rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-10px) rotate(-5deg); }
+            75% { transform: translateY(-10px) rotate(5deg); }
+        }
+
+        .frame-container {
+            position: relative;
+            display: inline-block;
+            animation: rotateIn 1.5s ease-out 0.5s both;
+        }
+
+        @keyframes rotateIn {
+            from {
+                opacity: 0;
+                transform: perspective(1000px) rotateY(180deg);
+            }
+            to {
+                opacity: 1;
+                transform: perspective(1000px) rotateY(0deg);
+            }
+        }
+
+        .ornate-frame {
+            position: relative;
+            padding: 2rem;
+            background: linear-gradient(145deg, #ffffff 0%, #fefefe 100%);
+            border-radius: 20px;
+            box-shadow: 
+                0 30px 90px rgba(255, 133, 168, 0.4),
+                inset 0 0 60px rgba(212, 175, 55, 0.1),
+                0 0 0 10px var(--gold-accent),
+                0 0 0 15px white,
+                0 0 0 20px var(--gold-accent);
+        }
+
+        .inner-frame {
+            position: relative;
+            border: 5px solid var(--gold-accent);
+            border-radius: 10px;
+            padding: 1rem;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(255, 249, 245, 0.9));
+            box-shadow: inset 0 0 30px rgba(212, 175, 55, 0.2);
+        }
+
+        .photo-placeholder {
+            width: 400px;
+            height: 400px;
+            max-width: 90vw;
+            max-height: 90vw;
+            background: linear-gradient(135deg, var(--rose-petal) 0%, var(--deep-rose) 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* If you want to add a real image, replace the .photo-placeholder class with this: */
+        .photo {
+            width: 400px;
+            height: 400px;
+            max-width: 90vw;
+            max-height: 90vw;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .corner-ornament {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--gold-accent);
+        }
+
+        .corner-ornament.top-left {
+            top: -5px;
+            left: -5px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .corner-ornament.top-right {
+            top: -5px;
+            right: -5px;
+            border-left: none;
+            border-bottom: none;
+        }
+
+        .corner-ornament.bottom-left {
+            bottom: -5px;
+            left: -5px;
+            border-right: none;
+            border-top: none;
+        }
+
+        .corner-ornament.bottom-right {
+            bottom: -5px;
+            right: -5px;
+            border-left: none;
+            border-top: none;
+        }
+
+        .message {
+            margin-top: 2rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            font-style: italic;
+            animation: fadeIn 2s ease-out 1s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hearts-rain {
+            position: absolute;
+            font-size: 1.5rem;
+            animation: fall 5s linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sparkle-bg" id="sparkles"></div>
+
+    <div class="container">
+        <h1 class="title">
+            <span class="crown">👑</span>
+            <br>
+            Aquí está
+        </h1>
+
+        <div class="frame-container">
+            <div class="ornate-frame">
+                <div class="corner-ornament top-left"></div>
+                <div class="corner-ornament top-right"></div>
+                <div class="corner-ornament bottom-left"></div>
+                <div class="corner-ornament bottom-right"></div>
+                
+                <div class="inner-frame">
+                    <!-- Placeholder: Replace with actual image -->
+                    <div class="photo-placeholder">
+                        <img src="foto.jpg" alt="Mi Princesa" class="photo">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p class="message">
+            La princesa más hermosa del mundo ✨
+        </p>
+    </div>
+
+    <!-- Falling hearts -->
+    <script>
+        // Create sparkles
+        const sparkleContainer = document.getElementById('sparkles');
+        for (let i = 0; i < 30; i++) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle-particle';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
+            sparkle.style.animationDelay = Math.random() * 3 + 's';
+            sparkleContainer.appendChild(sparkle);
+        }
+
+        // Create falling hearts
+        setInterval(() => {
+            const heart = document.createElement('div');
+            heart.className = 'hearts-rain';
+            heart.innerHTML = ['💖', '💗', '💕', '💓', '💝'][Math.floor(Math.random() * 5)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            document.body.appendChild(heart);
+            
+            setTimeout(() => heart.remove(), 8000);
+        }, 800);
+    </script>
+</body>
+</html>
